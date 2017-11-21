@@ -13,6 +13,7 @@
 
 Route::get('/', function()
 {
+
 	return view('home');
 });
 
@@ -69,8 +70,10 @@ Route::get('/blank', function()
 
 Route::get('/login', function()
 {
-	return view('login');
+	return view('auth.login');
 });
+
+Route::post('/login/{user}','Auth\LoginController@login');
 
 Route::get('/documentation', function()
 {

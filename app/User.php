@@ -7,8 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    /**
+     * For third Party integration
+     */
     use Notifiable;
 
+    protected $guard ='user';
     /**
      * The attributes that are mass assignable.
      *
