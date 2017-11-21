@@ -14,9 +14,9 @@ use App\Models\Role;
 
 class User extends Model
 {
-    protected $table = 'user';
-    public function role()
+    protected $table = 'users';
+    public function roles()
     {
-        return $this->belongsTo (Role::class);
+        return $this->belongsToMany(Role::class);
     }
 }

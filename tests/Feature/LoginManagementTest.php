@@ -14,10 +14,8 @@ class LoginManagementTest extends TestCase
     public function testGetUser()
     {
         $email = 'jeffravi@bism.or';
-        error_log($email);
         $loginService = new LoginManagementService();
         $loginService->getUser($email);
-
         $this->assertTrue(true);
     }
 }

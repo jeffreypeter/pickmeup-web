@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Role;
+use App\Models\Role;
 
-class RoleTableSeeder extends Seeder
+class RolesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,8 +13,8 @@ class RoleTableSeeder extends Seeder
     public function run()
     {
         $role_admin = new Role();
-        $role_admin->name = ‘admin’;
-        $role_admin->description = "Admin for an applicatinon";
+        $role_admin->name = 'admin';
+        $role_admin->description = 'Admin of an application';
         $role_admin->save();
     }
 }
