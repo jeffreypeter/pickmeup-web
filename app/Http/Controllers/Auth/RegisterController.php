@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class RegisterController extends Controller
 {
@@ -27,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -45,12 +49,22 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+	 
+	 
+	
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
+			//'confirm_password' => 'same:password',
+			'phone' => 'required|numeric|min:6',
+			'organization' => 'string|min:3',
+			'address ' => 'string|min:6',
+			'profile_pic ' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+			
+			
         ]);
     }
 
@@ -66,6 +80,34 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+			'phone' => $data['phone'],
+			'organization' => $data['organization'],
+			'address' => $data['address'],
+			'profile_pic' => $data['profile_pic'],
+			'created_at'=>date('Y-m-d H:i:s'),
+			'updated_at' => date('Y-m-d H:i:s'),
+			//'updated_at'=>$data['updated_at'],
+			'active'=>0,
+			
         ]);
     }
+	
+	
+	
+	public function postRegister(Request $request)
+   {
+       $validator = $this->validator($request->all());
+
+       if ($validator->fails()) {
+           $this->throwValidationException(
+               $request, $validator
+           );
+       }
+
+     
+	  $this->create($request->all());
+	
+
+       return redirect($this->redirectPath());
+   }
 }

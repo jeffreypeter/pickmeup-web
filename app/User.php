@@ -1,33 +1,22 @@
 <?php
 
-namespace App;
+/**
+ * Created by IntelliJ IDEA.
+ * User: jeffr
+ * Date: 21-11-2017
+ * Time: 08:59
+ */
+namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Role;
 
-class User extends Authenticatable
+
+class User extends Model
 {
-    /**
-     * For third Party integration
-     */
-    use Notifiable;
-
-    protected $guard ='user';
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $table = 'users';
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 }
