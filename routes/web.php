@@ -79,3 +79,7 @@ Route::get('/documentation', function()
 {
 	return view('documentation');
 });
+
+/*Route::prefix('event')->group(function () {
+//
+}*/

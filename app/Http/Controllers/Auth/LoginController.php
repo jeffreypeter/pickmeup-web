@@ -30,7 +30,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+//    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -47,6 +47,11 @@ class LoginController extends Controller
         $loginService = new LoginManagementService();
         Log::info($request);
 
+        if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
+            Log::info("Authentication passed");
+            return redirect()->intended('dashboard');
+        }
+        Log::info("Authentication failed");
 //        $loginService->getUser()
         // Validate the form data
         //$data = $request->json()->all();
