@@ -12,7 +12,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url ('') }}">SB Admin v2.0 | Laravel 5</a>
+                <a class="navbar-brand" href="{{ url ('') }}">PickMeUp | Admin</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -340,6 +340,9 @@
                 </div>
                 <!-- /.col-lg-12 -->
            </div>
+            <div class="row">
+                @yield('breadcrumb')
+            </div>
 			<div class="row">  
 				@yield('section')
 

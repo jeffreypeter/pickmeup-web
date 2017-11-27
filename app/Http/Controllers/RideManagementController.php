@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use View;
-use Illuminate\Support\Facades\Log;
-use App\Models\Event;
+use App\Models\Ride;
 use Illuminate\Http\Request;
 
-class EventManagementController extends Controller
+class RideManagementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,7 @@ class EventManagementController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
-        return View::make('events.index')
-            ->with('events', $events);
+        //
     }
 
     /**
@@ -39,30 +36,30 @@ class EventManagementController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Event $event
+     * @param  \App\Models\Ride  $ride
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-//        Log::info('In::EventManagementController@show::: '.$id);
-        $event = Event::find($id);
-        return View::make('events.event')
-            ->with('event', $event);
+        $ride = Ride::find($id);
+        return View::make('rides.ride')
+            ->with('ride', $ride);
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Event  $event
+     * @param  \App\Models\Ride  $ride
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit(Ride $ride)
     {
         //
     }
@@ -71,10 +68,10 @@ class EventManagementController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Event  $event
+     * @param  \App\Models\Ride  $ride
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, Ride $ride)
     {
         //
     }
@@ -82,10 +79,10 @@ class EventManagementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Event  $event
+     * @param  \App\Models\Ride  $ride
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy(Ride $ride)
     {
         //
     }

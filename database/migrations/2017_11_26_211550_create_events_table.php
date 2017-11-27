@@ -19,6 +19,7 @@ class CreateEventsTable extends Migration
             $table->string('location');
             $table->string('description');
             $table->string('url')->nullable();
+            $table->integer('registration')->nullable();
             $table->integer('capacity')->nullable();
             $table->dateTime('datetime');
             $table->decimal('cost', 5, 2);

@@ -18,6 +18,7 @@ mix.copy('bower_components/fontawesome/fonts', 'public/assets/fonts');
 mix.styles([
    'bower_components/bootstrap/dist/css/bootstrap.css',
    'bower_components/fontawesome/css/font-awesome.css',
+   'node_modules/datatables.net-dt/css/jquery.dataTables.css',
    'resources/css/sb-admin-2.css',
    'resources/css/timeline.css'
 ], 'public/assets/stylesheets/styles.css')
@@ -28,6 +29,7 @@ mix.scripts([
    'bower_components/bootstrap/dist/js/bootstrap.js',
    'bower_components/Chart.js/dist/Chart.js',
    'bower_components/metisMenu/dist/metisMenu.js',
+   'node_modules/datatables.net/js/jquery.dataTables.js',
    'resources/js/sb-admin-2.js',
    'resources/js/frontend.js'
 ], 'public/assets/scripts/frontend.js')

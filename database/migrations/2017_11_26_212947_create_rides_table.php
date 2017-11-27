@@ -16,7 +16,9 @@ class CreateRidesTable extends Migration
         Schema::create('rides', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('capacity')->nullable();
             $table->integer('event_id')->unsigned();
+            $table->integer('driver_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

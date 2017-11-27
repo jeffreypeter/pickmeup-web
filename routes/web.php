@@ -80,6 +80,6 @@ Route::get('/documentation', function()
 	return view('documentation');
 });
 
-/*Route::prefix('event')->group(function () {
-//
-}*/
+Route::resource('events', 'EventManagementController');
+
+Route::resource('rides', 'RideManagementController');

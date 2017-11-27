@@ -18,6 +18,8 @@ class EventsTableSeeder extends Seeder
         $new_event->location = 'EEC';
         $new_event->description = 'Learn about christmas';
         $new_event->cost = 0;
+        $new_event->registration = 10;
+        $new_event->capacity = 100;
         $new_event->dateTime = Carbon::now()->format('Y-m-d H:i:s');
         $new_event->save();
         $new_event = new Event();
@@ -25,6 +27,8 @@ class EventsTableSeeder extends Seeder
         $new_event->location = 'Brown County';
         $new_event->description = 'Brown County Camping';
         $new_event->cost = 0;
+        $new_event->registration = 15;
+        $new_event->capacity = 200;
         $new_event->dateTime = Carbon::now()->format('Y-m-d H:i:s');
         $new_event->save();
     }

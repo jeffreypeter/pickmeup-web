@@ -20,5 +20,17 @@ class RolesTableSeeder extends Seeder
         $role_mod->name = 'moderator';
         $role_mod->description = 'Moderator of admins';
         $role_mod->save();
+//        $role = new Role();
+//        // 3
+//        $role->name = 'driver';
+//        $role->description = 'driver for an event';
+//        $role->save();
+//        $role = new Role();
+//        // 4
+//        $role->name = 'rider';
+//        $role->description = 'rider for an event';
+//        $role->save();
+
+
     }
 }
