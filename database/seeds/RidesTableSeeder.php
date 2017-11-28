@@ -30,6 +30,5 @@ class RidesTableSeeder extends Seeder
         $ride->save();
         $ride->riders()->attach(2,['location'=>'PD1']);
         $ride->riders()->attach(3,['location'=>'PD2']);
-
     }
 }

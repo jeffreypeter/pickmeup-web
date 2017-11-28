@@ -81,5 +81,5 @@ Route::get('/documentation', function()
 });
 
 Route::resource('events', 'EventManagementController');
-
+Route::post('/rides/{id}/remove/{user}','RideManagementController@removeRider');
 Route::resource('rides', 'RideManagementController');

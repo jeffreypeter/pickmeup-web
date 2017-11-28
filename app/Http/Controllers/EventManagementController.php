@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use View;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Log;
 use App\Models\Event;
 use Illuminate\Http\Request;
@@ -85,8 +87,13 @@ class EventManagementController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy($id)
     {
-        //
+//        Log::info('In::RideManagementController@destroy::: '.$id);
+        $event = Event::find($id);
+
+        Session::flash('message', 'Successfully removed '.$event->name);
+        $event->delete();
+        return Redirect::to('events');
     }
 }

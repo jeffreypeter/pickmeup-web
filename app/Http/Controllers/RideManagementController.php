@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use View;
+use Session;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Log;
 use App\Models\Ride;
 use Illuminate\Http\Request;
 
@@ -82,8 +85,19 @@ class RideManagementController extends Controller
      * @param  \App\Models\Ride  $ride
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ride $ride)
+    public function destroy($id)
     {
-        //
+        Log::info('In::RideManagementController@destroy::: '.$id);
+        $ride = Ride::find($id);
+        $eventId = $ride->event->id;
+        Session::flash('message', 'Successfully removed '.$ride->name);
+        $ride->delete();
+        return Redirect::to('events/'.$eventId);
+    }
+    public function removeRider($id,$userId) {
+        Log::info('In::RideManagementController@updateUser::: '.$id.' ;UserId:: '.$userId);
+        $ride = Ride::find($id);
+        $ride->riders()->detach($userId);
+        return Redirect::to('rides/'.$id);
     }
 }

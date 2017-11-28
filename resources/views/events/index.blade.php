@@ -34,16 +34,14 @@
                 <td>{{ $value->updated_at }}</td>
                 <!-- we will also add show, edit, and delete buttons -->
                 <td>
-
-                    <!-- delete the nerd (uses the destroy method DESTROY /nerds/{id} -->
-                    <!-- we will add this later since its a little more complicated than the other two buttons -->
-
-                    <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-                    <a class="btn btn-small btn-primary" href="{{ URL::to('events/' . $value->id) }}">More</a>
-
-                    <!-- edit this nerd (uses the edit method found at GET /nerds/{id}/edit -->
-                    {{--<a class="btn btn-small btn-info" href="{{ URL::to('nerds/' . $value->id . '/edit') }}">Edit this Nerd</a>--}}
-
+                    <a class="btn btn-small btn-primary pull-left" href="{{ URL::to('events/' . $value->id) }}"><i class="fa fa-info" aria-hidden="true"></i> </a>
+                    <a class="btn btn-small btn-warning pull-left" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    {{ Form::open(array('url' => 'events/' . $value->id, 'class'=>'pull-left')) }}
+                    {{ Form::hidden('_method', 'DELETE') }}
+                    <button type="submit" class="btn btn-small btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                    {{ Form::close() }}
                 </td>
             </tr>
         @endforeach

@@ -75,7 +75,14 @@
                 <td>{{ $value->name }}</td>
                 <td>{{ $value->updated_at }}</td>
                 <td>
-                    <a class="btn btn-small btn-primary" href="{{ URL::to('rides/' . $value->id) }}">More</a>
+                    <a class="btn btn-small btn-primary pull-left" href="{{ URL::to('rides/' . $value->id) }}"><i class="fa fa-info" aria-hidden="true"></i> </a>
+                    <a class="btn btn-small btn-warning pull-left" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    {{ Form::open(array('url' => 'rides/' . $value->id, 'class'=>'pull-left')) }}
+                    {{ Form::hidden('_method', 'DELETE') }}
+                    <button type="submit" class="btn btn-small btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+                    {{ Form::close() }}
                 </td>
             </tr>
         @endforeach

@@ -46,7 +46,13 @@
                     <td>{{ $value->pivot->location }}</td>
                     <td>{{ $value->pivot->datetime }}</td>
                     <td>
-                        <a class="btn btn-small btn-primary" href="{{ URL::to('rides/' . $value->id) }}">More</a>
+                        <a class="btn btn-small btn-warning pull-left" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        {{ Form::open(array('url' => '/rides/'.$ride->id.'/remove/'. $value->id, 'class'=>'pull-left')) }}
+{{--                        {{ Form::hidden('_method', 'PUT') }}--}}
+                        <button type="submit" class="btn btn-small btn-danger">
+                            <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                        </button>
+                        {{ Form::close() }}
                     </td>
                 </tr>
             @endforeach
