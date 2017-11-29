@@ -7,6 +7,7 @@ use Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Log;
 use App\Models\Ride;
+
 use Illuminate\Http\Request;
 
 class RideManagementController extends Controller
@@ -39,7 +40,11 @@ class RideManagementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ride = new Ride();
+        $ride->fill($request->all());
+        $ride->save();
+        Session::flash('message', 'Successfully created ride!');
+        return Redirect::to('rides/'.$ride->id);
     }
 
     /**

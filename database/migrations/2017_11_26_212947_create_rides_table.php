@@ -18,6 +18,7 @@ class CreateRidesTable extends Migration
             $table->string('name');
             $table->string('capacity')->nullable();
             $table->integer('event_id')->unsigned();
+            $table->dateTime('start_time')->nullable();
             $table->integer('driver_id')->unsigned()->nullable();
             $table->timestamps();
         });

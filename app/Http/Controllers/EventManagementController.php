@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Log;
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EventManagementController extends Controller
@@ -41,7 +42,15 @@ class EventManagementController extends Controller
      */
     public function store(Request $request)
     {
-
+        Log::info('In::EventManagementController@store::: ');
+//        Log::info($request->all());
+        $event = new Event();
+        $event->fill($request->all());
+        $event->save();
+        Log::info($event);
+        // redirect
+        Session::flash('message', 'Successfully created event!');
+        return Redirect::to('events');
     }
 
     /**
@@ -54,8 +63,10 @@ class EventManagementController extends Controller
     {
 //        Log::info('In::EventManagementController@show::: '.$id);
         $event = Event::find($id);
+        $users = User::all();
         return View::make('events.event')
-            ->with('event', $event);
+            ->with('event', $event)
+            ->with('users', $users);
     }
 
     /**

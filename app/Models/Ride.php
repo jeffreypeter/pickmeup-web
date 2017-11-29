@@ -9,7 +9,12 @@ use App\Models\Event;
 class Ride extends Model
 {
     protected $table = "rides";
-
+    protected $fillable = [
+        'name',
+        'start_time',
+        'event_id',
+        'driver_id',
+    ];
     public function event() {
         return $this->belongsTo(Event::class);
     }
