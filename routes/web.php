@@ -22,6 +22,15 @@ Route::get('/charts', function()
 	return view('mcharts');
 });
 
+
+
+Route::get('/register', function()
+{
+	return view('auth.register');
+});
+
+
+
 Route::get('/tables', function()
 {
 	return view('table');
@@ -74,6 +83,8 @@ Route::get('/login', function()
 });
 
 Route::post('/login','Auth\LoginController@login');
+
+Route::post('/auth/register','Auth\RegisterController@postRegister');
 
 Route::get('/documentation', function()
 {
