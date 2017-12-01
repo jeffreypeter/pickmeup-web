@@ -12,7 +12,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url ('') }}">PickMeUp | Admin</a>
+                <a class="navbar-brand" href="{{ url ('') }}">PickMeUp | Admin   Welcome {{ Auth::user()->name }}</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -221,7 +221,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="{{ url ('login') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="{{ url ('logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

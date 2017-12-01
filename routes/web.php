@@ -82,7 +82,9 @@ Route::get('/login', function()
 	return view('auth.login');
 });
 
-Route::post('/login','Auth\LoginController@login');
+Route::post('/login','LoginController@login');
+
+Route::get('/logout','LoginController@logout');
 
 Route::post('/auth/register','Auth\RegisterController@postRegister');
 
