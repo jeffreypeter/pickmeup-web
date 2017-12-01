@@ -81,14 +81,14 @@
                     <tbody>
                     @foreach($events as $key => $value)
                         <tr>
-                            <td>{{ $value->name }}</td>
+                            <td><a href="{{ URL::to('events/' . $value->id) }}">{{ $value->name }}</a></td>
                             <td>{{ $value->location }}</td>
                             <td>{{ $value->datetime }}</td>
                             <td>{{ $value->updated_at }}</td>
                             <!-- we will also add show, edit, and delete buttons -->
                             <td>
                                 <a class="btn btn-small btn-primary pull-left" href="{{ URL::to('events/' . $value->id) }}"><i class="fa fa-info" aria-hidden="true"></i> </a>
-                                <a class="btn btn-small btn-warning pull-left" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                {{--<a class="btn btn-small btn-warning pull-left" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>--}}
                                 {{ Form::open(array('url' => 'events/' . $value->id, 'class'=>'pull-left')) }}
                                 {{ Form::hidden('_method', 'DELETE') }}
                                 <button type="submit" class="btn btn-small btn-danger">

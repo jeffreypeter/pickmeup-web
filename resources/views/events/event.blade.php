@@ -14,10 +14,14 @@
         <div class="row">
             <div class="col-8">
                 <div class="row">
-                    <form class="form-horizontal">
-                        <input type="hidden" name="id" value="{{$event->id}}">
+                    {{--<form class="form-horizontal" method="put" action="event/.{{$event->id}}">--}}
+{{--                    {{ Form::model($event, array('route' => 'ride.update', $event->id)) }}--}}
+                    {{ Form::open(array('url' => 'events/' . $event->id, 'class'=>'form-horizontal')) }}
+                        {{--<input type="hidden" name="id" value="{{$event->id}}">--}}
+                        <input type='hidden' name='_method' value='PUT' />
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Name</label>
+                            {{--<label class="col-sm-2 control-label">Name</label>--}}
+                            {{Form::label('name', 'Name', array('class' => 'col-sm-2 control-label'))}}
                             <div class="col-sm-5">
                                 <input type="text" class="form-control" name="name" value="{{$event->name}}">
                             </div>
@@ -31,7 +35,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Description</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" value="{{$event->description}}">
+                                <input type="text" class="form-control" name="description" value="{{$event->description}}">
                             </div>
                         </div>
                         <div class="form-group">
@@ -46,19 +50,22 @@
                                 <input type="text" class="form-control" name="cost" value="{{$event->cost}}">
                             </div>
                         </div>
-                        <div class="form-group">
+                        {{--<div class="form-group">
                             <label class="col-sm-2 control-label">Registration</label>
                             <div class="col-sm-5">
                                 <input type="text" class="form-control" name="cost" value="{{$event->registration}}">
                             </div>
-                        </div>
+                        </div>--}}
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Capacity</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" name="cost" value="{{$event->capacity}}">
+                                <input type="text" class="form-control" name="capacity" value="{{$event->capacity}}">
                             </div>
                         </div>
-                    </form>
+                        <div class="col-sm-7">
+                            <button type="submit" class="btn btn-info pull-right">Update</button>
+                        </div>
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
@@ -129,7 +136,8 @@
                     <tbody>
                     @foreach($event->rides as $key => $value)
                         <tr>
-                            <td>{{ $value->name }}</td>
+                            <td><a
+                                   href="{{ URL::to('rides/' . $value->id) }}">{{ $value->name }}</a></td>
                             <td>
                                 @if (!is_null($value->driver))
                                    {{$value->driver->name}}
@@ -140,8 +148,8 @@
                                 <a class="btn btn-small btn-primary pull-left"
                                    href="{{ URL::to('rides/' . $value->id) }}"><i class="fa fa-info"
                                                                                   aria-hidden="true"></i> </a>
-                                <a class="btn btn-small btn-warning pull-left" href="#"><i class="fa fa-pencil"
-                                                                                           aria-hidden="true"></i></a>
+                                <a{{-- class="btn btn-small btn-warning pull-left" href="#"><i class="fa fa-pencil"
+                                                                                           aria-hidden="true"></i></a>--}}
                                 {{ Form::open(array('url' => 'rides/' . $value->id, 'class'=>'pull-left')) }}
                                 {{ Form::hidden('_method', 'DELETE') }}
                                 <button type="submit" class="btn btn-small btn-danger">

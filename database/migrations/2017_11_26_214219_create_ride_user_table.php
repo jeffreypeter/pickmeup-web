@@ -17,7 +17,7 @@ class CreateRideUserTable extends Migration
             $table->increments('id');
             $table->integer('ride_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->string('location');
+            $table->string('location')->nullable();
             $table->dateTime('datetime')->nullable();
             $table->timestamps();
         });

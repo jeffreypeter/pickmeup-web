@@ -1,7 +1,6 @@
 @extends('layouts.dashboard')
 @section('page_heading','Dashboard')
 @section('section')
-           
             <!-- /.row -->
             <div class="col-sm-12">
             <div class="row">
@@ -95,7 +94,7 @@
                 </div>
             </div>
             <!-- /.row -->
-            <div class="row">
+            {{--<div class="row">
                 <div class="col-lg-8">
                 
                 @section ('pane2_panel_title', 'Responsive Timeline')
@@ -213,9 +212,9 @@
                     <!-- /.panel -->
                 @endsection
                 @include('widgets.panel', array('header'=>true, 'as'=>'pane2'))
-                </div>
+                </div>--}}
                 <!-- /.col-lg-8 -->
-                <div class="col-lg-4">
+                {{--<div class="col-lg-4">
                     @section ('cchart11_panel_title','Line Chart')
                     @section ('cchart11_panel_body')
                     @include('widgets.charts.clinechart')
@@ -224,8 +223,8 @@
 
                     @section ('pane1_panel_title', 'Notifications Panel')
                     @section ('pane1_panel_body')
-                     
-                        
+
+
                             <div class="list-group">
                                 <a href="#" class="list-group-item">
                                     <i class="fa fa-comment fa-fw"></i> New Comment
@@ -275,13 +274,13 @@
                             </div>
                             <!-- /.list-group -->
                             <a href="#" class="btn btn-default btn-block">View All Alerts</a>
-                        
+
                         <!-- /.panel-body -->
-                  
+
                     @endsection
                     @include('widgets.panel', array('header'=>true, 'as'=>'pane1'))
-                      
-                    
+
+
                     <!-- /.panel -->
                     @section ('pane3_panel_title', 'Chat')
                     @section ('pane3_panel_body')
@@ -317,7 +316,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </div>      
+                            </div>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -401,7 +400,7 @@
                     <!-- /.panel .chat-panel -->
                     @endsection
                     @include('widgets.panel', array('header'=>true, 'as'=>'pane3'))
-                </div>
+                </div>--}}
 
                 <!-- /.col-lg-4 -->
             

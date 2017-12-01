@@ -87,9 +87,15 @@ class EventManagementController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, $id)
     {
-        //
+        Log::info('In::RideManagementController@update::: '.$id);
+        $event = Event::find($id);
+        $event->fill($request->all());
+        $event->save();
+//        Log::info($event);
+        Session::flash('message', 'Successfully updated Event!');
+        return Redirect::to('events/'.$id);
     }
 
     /**

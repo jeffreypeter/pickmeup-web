@@ -93,4 +93,5 @@ Route::get('/documentation', function()
 
 Route::resource('events', 'EventManagementController');
 Route::post('/rides/{id}/remove/{user}','RideManagementController@removeRider');
+Route::post('/rides/{id}/add','RideManagementController@addRider');
 Route::resource('rides', 'RideManagementController');

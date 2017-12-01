@@ -7,6 +7,7 @@ use Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Log;
 use App\Models\Ride;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 
@@ -56,8 +57,10 @@ class RideManagementController extends Controller
     public function show($id)
     {
         $ride = Ride::find($id);
+        $users = User::all();
         return View::make('rides.ride')
-            ->with('ride', $ride);
+            ->with('ride', $ride)
+            ->with('users', $users);
 
     }
 
@@ -79,9 +82,13 @@ class RideManagementController extends Controller
      * @param  \App\Models\Ride  $ride
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ride $ride)
+    public function update(Request $request, $id)
     {
-        //
+        $ride = Ride::find($id);
+        $ride->fill($request->all());
+        $ride->save();
+        Session::flash('message', 'Successfully updated Event!');
+        return Redirect::to('rides/'.$id);
     }
 
     /**
@@ -103,6 +110,14 @@ class RideManagementController extends Controller
         Log::info('In::RideManagementController@updateUser::: '.$id.' ;UserId:: '.$userId);
         $ride = Ride::find($id);
         $ride->riders()->detach($userId);
+        return Redirect::to('rides/'.$id);
+    }
+
+    public function addRider($id, Request $request) {
+        Log::info('In::RideManagementController@updateUser::: '.$id);
+        $ride = Ride::find($id);
+        $ride->riders()->attach($request['user_id']);
+//        Log::info('Request'.$request['user_id']);
         return Redirect::to('rides/'.$id);
     }
 }
