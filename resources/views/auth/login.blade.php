@@ -6,6 +6,16 @@
 				<br /><br /><br />
 				@section ('login_panel_title','Please Sign In')
 				@section ('login_panel_body')
+				
+				
+				<!-- if there are login errors, show them here -->
+<p>
+
+
+    
+</p>
+
+
 					<form role="form" method="post" action="/login">
 						<fieldset>
 							<div class="form-group">

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
 
+	
+	namespace App\Http\Controllers;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -10,9 +11,9 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use DB;
 use Auth;
-
-
     use AuthenticatesUsers;
+	
+	
 
 class LoginController extends BaseController
 {
@@ -21,19 +22,7 @@ class LoginController extends BaseController
 		
 		$email=$req->input('email');
 		$password=$req->input('password');
-		/*
-		$checkLogin = DB::table('users')->where(['email'=>$email,'password'=>$password])->get();
-      if(count($checkLogin)  >0)
-      {
-		  
 		
-       return redirect('/');
-      }
-      else
-      {
-          return redirect('/login');
-      }
-	  */
 	  
 	  if (Auth::attempt(['email' => $email, 'password' => $password]))
         {
@@ -58,7 +47,7 @@ class LoginController extends BaseController
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.

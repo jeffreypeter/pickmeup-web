@@ -6,16 +6,31 @@
  * Date: 21-11-2017
  * Time: 08:59
  */
+
+
+
+
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Contracts\Auth\Authenticatable;
 use App\Models\Role;
-//use Illuminate\Foundation\Auth\User as Authenticatable;
+//use Illuminate\Foundation\Auth\User as Auths;
+
+//use  Illuminate\Contracts\Auth\Authenticatable;
 
 
-class User extends Model 
+
+
+
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+
+
+ 
+
+class User extends Model implements Authenticatable
 {
+	
+	   use AuthenticableTrait;
     protected $table = 'users';
     protected $fillable = [
         'name', 'email', 'password','updated_at','created_at','address','phone','active','organization','profile_pic',
@@ -25,7 +40,7 @@ class User extends Model
     {
         return $this->belongsToMany(Role::class);
     }
-
+/*
     public function authorizeRoles($roles) {
         if(is_array($roles)) {
             return $this->hasAnyRole($roles) || abort(401, 'This action is unauthorized.');
@@ -40,4 +55,6 @@ class User extends Model
     public function hasRole($role) {
         return null !== $this->roles()->where('name',$role)->first();
     }
+	
+	*/
 }
