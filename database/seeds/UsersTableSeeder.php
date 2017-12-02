@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
         $adminUser->name ='Jeffrey';
         $adminUser->email = 'jeffravi@iu.edu';
         $adminUser->phone = '8122728408';
-        $adminUser->password='testing';
+        $adminUser->password=bcrypt('testing');
         $adminUser->organization='BISM';
         $adminUser->address='home';
         $adminUser->active=true;
@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
         $user->name ='Dwayne';
         $user->email = 'wayne@iu.edu';
         $user->phone = '7122728408';
-        $user->password='testing';
+        $user->password=bcrypt('testing');
         $user->organization='BISM';
         $user->address='home';
         $user->active=true;
@@ -41,7 +41,7 @@ class UsersTableSeeder extends Seeder
         $user->name ='Ramya';
         $user->email = 'ramya@iu.edu';
         $user->phone = '6122728408';
-        $user->password='testing';
+        $user->password=bcrypt('testing');
         $user->organization='BISM';
         $user->address='home';
         $user->active=true;
@@ -51,7 +51,7 @@ class UsersTableSeeder extends Seeder
         $user->name ='elan';
         $user->email = 'elan@iu.edu';
         $user->phone = '1122728408';
-        $user->password='testing';
+        $user->password=bcrypt('testing');
         $user->organization='BISM';
         $user->address='home';
         $user->active=true;

@@ -15,7 +15,6 @@
                     <i class="fa fa-plus" aria-hidden="true"></i> New Event
                 </button>
             </div>
-
             <!-- Modal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
