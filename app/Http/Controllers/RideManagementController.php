@@ -45,6 +45,7 @@ class RideManagementController extends Controller
         $ride->fill($request->all());
         $ride->save();
         Session::flash('message', 'Successfully created ride!');
+        Session::flash('status', 'success');
         return Redirect::to('rides/'.$ride->id);
     }
 
@@ -87,7 +88,8 @@ class RideManagementController extends Controller
         $ride = Ride::find($id);
         $ride->fill($request->all());
         $ride->save();
-        Session::flash('message', 'Successfully updated Event!');
+        Session::flash('message', 'Successfully updated the ride!');
+        Session::flash('status', 'success');
         return Redirect::to('rides/'.$id);
     }
 
@@ -103,6 +105,7 @@ class RideManagementController extends Controller
         $ride = Ride::find($id);
         $eventId = $ride->event->id;
         Session::flash('message', 'Successfully removed '.$ride->name);
+        Session::flash('status', 'success');
         $ride->delete();
         return Redirect::to('events/'.$eventId);
     }
@@ -110,6 +113,8 @@ class RideManagementController extends Controller
         Log::info('In::RideManagementController@updateUser::: '.$id.' ;UserId:: '.$userId);
         $ride = Ride::find($id);
         $ride->riders()->detach($userId);
+        Session::flash('message', 'Successfully removed the user!');
+        Session::flash('status', 'success');
         return Redirect::to('rides/'.$id);
     }
 
@@ -117,7 +122,8 @@ class RideManagementController extends Controller
         Log::info('In::RideManagementController@updateUser::: '.$id);
         $ride = Ride::find($id);
         $ride->riders()->attach($request['user_id']);
-//        Log::info('Request'.$request['user_id']);
+        Session::flash('message', 'Successfully added the user!');
+        Session::flash('status', 'success');
         return Redirect::to('rides/'.$id);
     }
 }

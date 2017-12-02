@@ -348,9 +348,14 @@
            </div>
             <div class="row">
                 @yield('breadcrumb')
-                <div class="alert alert-success">
-                    <strong>Success!</strong> Indicates a successful or positive action.
+                @if(Session::has('message'))
+                <div class="alert alert-{{Session::get('status')}} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{Session::get('message')}}
                 </div>
+                @endif
             </div>
 			<div class="row">  
 				@yield('section')

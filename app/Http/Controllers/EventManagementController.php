@@ -50,6 +50,8 @@ class EventManagementController extends Controller
         Log::info($event);
         // redirect
         Session::flash('message', 'Successfully created event!');
+        Session::flash('status', 'success');
+
         return Redirect::to('events');
     }
 
@@ -93,8 +95,8 @@ class EventManagementController extends Controller
         $event = Event::find($id);
         $event->fill($request->all());
         $event->save();
-//        Log::info($event);
         Session::flash('message', 'Successfully updated Event!');
+        Session::flash('status', 'success');
         return Redirect::to('events/'.$id);
     }
 
@@ -109,8 +111,10 @@ class EventManagementController extends Controller
 //        Log::info('In::RideManagementController@destroy::: '.$id);
         $event = Event::find($id);
 
-        Session::flash('message', 'Successfully removed '.$event->name);
         $event->delete();
+        Session::flash('message', 'Successfully removed '.$event->name);
+        Session::flash('status', 'success');
+
         return Redirect::to('events');
     }
 }

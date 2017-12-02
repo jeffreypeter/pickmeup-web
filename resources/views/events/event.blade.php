@@ -97,6 +97,7 @@
                             <div class="form-group">
                                 {{ Form::label('driver_id', 'Driver') }}
                                 <select class="form-control" name="driver_id">
+                                    <option selected value>Select</option>
                                     @foreach($users as $key => $value)
                                         <option value="{{$value->id}}">{{$value->name}}</option>
                                     @endforeach
@@ -148,8 +149,6 @@
                                 <a class="btn btn-small btn-primary pull-left"
                                    href="{{ URL::to('rides/' . $value->id) }}"><i class="fa fa-info"
                                                                                   aria-hidden="true"></i> </a>
-                                <a{{-- class="btn btn-small btn-warning pull-left" href="#"><i class="fa fa-pencil"
-                                                                                           aria-hidden="true"></i></a>--}}
                                 {{ Form::open(array('url' => 'rides/' . $value->id, 'class'=>'pull-left')) }}
                                 {{ Form::hidden('_method', 'DELETE') }}
                                 <button type="submit" class="btn btn-small btn-danger">

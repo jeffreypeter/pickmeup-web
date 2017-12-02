@@ -25,19 +25,22 @@
             <div class="form-group">
                 <label class="col-sm-1 control-label">Driver</label>
                 <div class="col-sm-5">
-                    @if (!is_null($ride->driver))
+                    {{----}}
                         {{--<input type="text" class="form-control" name="name" value="{{$ride->driver->name}}">--}}
                         <select class="form-control" name="driver_id">
+                            <option disabled selected value>Select</option>
                             @if (!is_null($ride->driver))
-                                <option disabled selected value>Select</option>
+                                @foreach($users as $key => $value)
+                                    <option value="{{$value->id}}" {{ $value->id == $ride->driver->id ? 'selected="selected"' : '' }}>{{$value->name}}</option>
+                                @endforeach
+                            @else
+                                @foreach($users as $key => $value)
+                                    <option value="{{$value->id}}">{{$value->name}}</option>
+                                @endforeach
                             @endif
-                            @foreach($users as $key => $value)
-                                <option value="{{$value->id}}" {{ $value->id == $ride->driver->id ? 'selected="selected"' : '' }}>{{$value->name}}</option>
-                            @endforeach
+
                         </select>
-                    @else
-                        <input type="text" class="form-control" name="name" value="">
-                    @endif
+                    {{----}}
 
                 </div>
             </div>
