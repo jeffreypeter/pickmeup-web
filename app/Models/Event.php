@@ -21,4 +21,7 @@ class Event extends Model
     {
         return $this->hasMany(Ride::class);
     }
+    public function rsvps() {
+        return $this->belongsToMany(User::class);
+    }
 }
