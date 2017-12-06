@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
+use App\Models\Event;
+use App\Models\User;
+use App\Models\Ride;
+use View;
+
 
 class HomeController extends Controller
 {
@@ -33,8 +38,22 @@ class HomeController extends Controller
             return view('home-admin');
         } else {
             Log::info('guest');
-            return view('home-user');
+			
+		
+			
+			
+			$events=Event::whereIn('id', function($query){
+    $query->select('event_id')
+    ->from(with(new Ride)->getTable())
+    ->where('driver_id',Auth::user()->id);
+})->get();
+			
+        return View::make('home-user')
+            ->with('events', $events);
+           
         }
+		
+		
 
     }
     public function profile() {
