@@ -21,6 +21,7 @@ Route::get('/register', function()
 });
 
 
+Route::resource('users', 'UserManagementController');
 Route::resource('events', 'EventManagementController');
 Route::post('/rides/{id}/remove/{user}','RideManagementController@removeRider');
 Route::post('/rides/{id}/add','RideManagementController@addRider');

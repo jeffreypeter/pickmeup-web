@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use DB;
 use Auth;
 use AuthenticatesUsers;
+use Session;
 
 
 class LoginController extends BaseController
@@ -22,6 +23,8 @@ class LoginController extends BaseController
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             return redirect('/');
         } else {
+            Session::flash('message', 'Please check your email and password');
+            Session::flash('status', 'danger');
             return redirect('/login');
         }
     }

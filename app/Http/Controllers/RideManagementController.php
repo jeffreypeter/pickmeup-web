@@ -62,7 +62,6 @@ class RideManagementController extends Controller
         return View::make('rides.ride')
             ->with('ride', $ride)
             ->with('users', $users);
-
     }
 
     /**
