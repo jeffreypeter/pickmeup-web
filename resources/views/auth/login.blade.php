@@ -29,10 +29,9 @@
 							</div>
 							<!-- Change this to a button or input when using this as a form -->
 							<input type="submit" class="btn btn-lg btn-success btn-block" value="Login"/>
-							<a href ="register">Register as a rider</a>
+							<a href ="register" >Register</a>
 						</fieldset>
 					</form>
-
 
 				@endsection
 				@include('widgets.panel', array('as'=>'login', 'header'=>true))
