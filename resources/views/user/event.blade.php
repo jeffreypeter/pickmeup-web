@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-user')
+@extends(Auth::user()->hasRole('moderator') ? 'layouts.dashboard' : 'layouts.dashboard-user')
 @section('breadcrumb')
     <ul class="breadcrumb">
         <li><a href="{{ URL::to('/') }}">Home</a></li>

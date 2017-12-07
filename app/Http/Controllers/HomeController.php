@@ -32,13 +32,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-
+        $events = Event::count();
         if (Auth::user()->hasRole('moderator')) {
             Log::info('moderator');
-            return view('home-admin');
+
+            $dashboard = array(
+                'events' => $events
+            );
+            return view('home-admin')
+                ->with('dashboard', $dashboard);
         } else {
             Log::info('guest');
-            $events = Event::count();
             $dashboard = array(
                 'events' => $events
             );
@@ -69,6 +73,7 @@ class HomeController extends Controller
         $user->save();
         Auth::user()->fresh();
         Session::flash('message', 'Successfully updated User Profile!');
+        Session::flash('status', 'success');
         return view('user.profile');
     }
 }
