@@ -11,7 +11,7 @@
         <div class="row">
             <!-- Button trigger modal -->
             <div class="col-lg-4">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn btn-primary open-modal-button" data-toggle="modal" data-target="#myModal">
                     <i class="fa fa-plus" aria-hidden="true"></i> New User
                 </button>
             </div>

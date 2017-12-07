@@ -12,6 +12,7 @@
 */
 
 Route::get('/','HomeController@index');
+Route::get('/home','HomeController@index');
 Route::get('profile','HomeController@profile');
 Route::post('profile/{id}','HomeController@updateProfile');
 Route::get('/register', function()

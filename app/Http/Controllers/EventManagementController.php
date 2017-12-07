@@ -65,7 +65,8 @@ class EventManagementController extends Controller
     {
 //        Log::info('In::EventManagementController@show::: '.$id);
         $event = Event::find($id);
-        $users = $event->rsvps()->where('has_ride', 0)->get();
+//        $users = $event->rsvps()->where('has_ride', 0)->get();
+        $users = User::all();
         Log::info($users);
         return View::make('events.event')
             ->with('event', $event)

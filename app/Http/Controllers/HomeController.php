@@ -57,8 +57,6 @@ class HomeController extends Controller
                 ->with('dashboard', $dashboard);
 
         }
-
-
     }
 
     public function profile()

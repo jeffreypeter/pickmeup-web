@@ -25,9 +25,12 @@
                         <input type="submit" class="btn btn-lg btn-success btn-block" value="Login"></input>
                     </fieldset>
                 </form>
-
                 @endsection
                 @include('widgets.panel', array('as'=>'login', 'header'=>true))
+                <div style="font-size: 0.85em;margin-left: 10px">
+                    <p><a href="#">Forgot Password ?</a></p>
+                    <p><a href="{{ url ('register') }}">New User</a></p>
+                </div>
             </div>
         </div>
     </div>

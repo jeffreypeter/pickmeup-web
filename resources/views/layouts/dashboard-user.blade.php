@@ -11,7 +11,6 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ url ('') }}">PickMeUp</a>
-                {{--{{(Auth::user()->hasRole('moderator'))?'yes':'no'}}--}}
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
