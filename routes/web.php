@@ -32,13 +32,11 @@ Route::get('/login', function()
 	return view('auth.login');
 })->name('login');
 
-<<<<<<< HEAD
-
 
 Route::post('/login','LoginController@login');
-=======
+
 Route::post('/login','Auth\LoginController@login');
->>>>>>> master
+
 
 Route::get('/logout','Auth\LoginController@logout');
 
