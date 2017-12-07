@@ -27,7 +27,10 @@ class CreateUsersTable extends Migration
             $table->string('profile_pic')->nullable();
             $table->boolean('active');
 			$table->string('remember_token')->nullable();
-            $table->timestamps();
+            $table->boolean('confirmed')->nullable();
+            $table->boolean('confirmation_code')->nullable();
+			$table->timestamps();
+
         });
     }
 

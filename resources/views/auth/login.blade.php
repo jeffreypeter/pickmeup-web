@@ -14,8 +14,6 @@
 
     
 </p>
-
-
 					<form role="form" method="post" action="/login">
 						<fieldset>
 							<div class="form-group">
@@ -30,9 +28,11 @@
 								</label>
 							</div>
 							<!-- Change this to a button or input when using this as a form -->
-							<input type="submit" class="btn btn-lg btn-success btn-block" value="Login"></input>
+							<input type="submit" class="btn btn-lg btn-success btn-block" value="Login"/>
+							<a href ="register">Register as a rider</a>
 						</fieldset>
 					</form>
+
 
 				@endsection
 				@include('widgets.panel', array('as'=>'login', 'header'=>true))

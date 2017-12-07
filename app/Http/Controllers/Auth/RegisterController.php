@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+//use Mail;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -76,6 +78,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $confirmation_code = str_random(30);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -88,10 +91,35 @@ class RegisterController extends Controller
 			'updated_at' => date('Y-m-d H:i:s'),*/
 			//'updated_at'=>$data['updated_at'],
 			'active'=>0,
+            'confirmation_code' => $confirmation_code,
+            'confirmed' => 0
+
 			
         ]);
     }
-	
+
+    public function confirm($confirmation_code)
+    {
+        if( ! $confirmation_code)
+        {
+            throw new InvalidConfirmationCodeException;
+        }
+
+        $user = User::whereConfirmationCode($confirmation_code)->first();
+
+        if ( ! $user)
+        {
+            throw new InvalidConfirmationCodeException;
+        }
+
+        $user->confirmed = 1;
+        $user->confirmation_code = null;
+        $user->save();
+
+        Flash::message('You have successfully verified your account.');
+
+        return Redirect::route('login_path');
+    }
 	
 	
 	public function postRegister(Request $request)
@@ -103,9 +131,16 @@ class RegisterController extends Controller
                $request, $validator
            );
        }
+       //adding confirmation code part
+     /*  Mail::send('email.verify', $confirmation_code, function($message) {
+           $message->to(Input::get('email'), Input::get('name'))
+               ->subject('Verify your email address');
+       });*/
 
-     
-	  $this->create($request->all());
+       //Flash::message('Thanks for signing up with us! Please check your email.');
+
+
+       $this->create($request->all());
 	
 
        return redirect($this->redirectPath());

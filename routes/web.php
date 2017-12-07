@@ -18,7 +18,7 @@ Route::post('profile/{id}','HomeController@updateProfile');
 Route::get('/register', function()
 {
 	return view('auth.register');
-});
+})->name('register');
 
 
 Route::resource('events', 'EventManagementController');
@@ -31,12 +31,20 @@ Route::get('/login', function()
 	return view('auth.login');
 })->name('login');
 
+
+
 Route::post('/login','LoginController@login');
 
 Route::get('/logout','LoginController@logout');
 
 Route::post('/auth/register','Auth\RegisterController@postRegister');
 
+Route::get('register/verify/{confirmationCode}', [
+    'as' => 'confirmation_path',
+    'uses' => 'RegisterController@confirm'
+]);
+
+Route::post('/send', 'EmailController@send');
 
 /*
 Route::get('/documentation', function()
