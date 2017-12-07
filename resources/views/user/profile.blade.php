@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-user')
+@extends(Auth::user()->hasRole('moderator') ? 'layouts.dashboard' : 'layouts.dashboard-user')
 @section('page_heading')
     User Profile
 @stop

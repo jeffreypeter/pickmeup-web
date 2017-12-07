@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
 //            $table->foreign('role_id')->references('id')->on('users');
 //            $table->rememberToken();
             $table->string('profile_pic')->nullable();
-            $table->boolean('active');
+            $table->boolean('active')->default(false);
 			$table->string('remember_token')->nullable();
             $table->boolean('confirmed')->nullable();
             $table->boolean('confirmation_code')->nullable();

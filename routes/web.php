@@ -12,7 +12,6 @@
 */
 
 Route::get('/','HomeController@index');
-
 Route::get('profile','HomeController@profile');
 Route::post('profile/{id}','HomeController@updateProfile');
 Route::get('/register', function()
@@ -20,22 +19,28 @@ Route::get('/register', function()
 	return view('auth.register');
 })->name('register');
 
-
+Route::get('events/upcoming','UserController@getEvents');
+Route::get('events/rides','UserController@getRides');
+Route::get('events/event/{id}','UserController@getEventDetails');
+Route::resource('users', 'UserManagementController');
 Route::resource('events', 'EventManagementController');
 Route::post('/rides/{id}/remove/{user}','RideManagementController@removeRider');
 Route::post('/rides/{id}/add','RideManagementController@addRider');
 Route::resource('rides', 'RideManagementController');
-
 Route::get('/login', function()
 {
 	return view('auth.login');
 })->name('login');
 
+<<<<<<< HEAD
 
 
 Route::post('/login','LoginController@login');
+=======
+Route::post('/login','Auth\LoginController@login');
+>>>>>>> master
 
-Route::get('/logout','LoginController@logout');
+Route::get('/logout','Auth\LoginController@logout');
 
 Route::post('/auth/register','Auth\RegisterController@postRegister');
 

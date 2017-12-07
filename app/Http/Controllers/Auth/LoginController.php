@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -11,6 +11,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use DB;
 use Auth;
 use AuthenticatesUsers;
+use Session;
 
 
 class LoginController extends BaseController
@@ -22,6 +23,8 @@ class LoginController extends BaseController
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             return redirect('/');
         } else {
+            Session::flash('message', 'Please check your email and password');
+            Session::flash('status', 'danger');
             return redirect('/login');
         }
     }

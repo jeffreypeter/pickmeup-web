@@ -24,7 +24,7 @@ class Ride extends Model
     public function riders()
     {
         return $this->belongsToMany(User::class)
-            ->withPivot('location')
+            ->withPivot('location','datetime')
             ->withTimestamps();
     }
 }
