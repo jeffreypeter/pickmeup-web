@@ -120,7 +120,7 @@ class RideManagementController extends Controller
     public function addRider($id, Request $request) {
         Log::info('In::RideManagementController@updateUser::: '.$id);
         $ride = Ride::find($id);
-        $ride->riders()->attach($request['user_id']);
+        $ride->riders()->attach($request['user_id'],array('location'=>$request['location'],'datetime'=>$request['datetime']));
         Session::flash('message', 'Successfully added the user!');
         Session::flash('status', 'success');
         return Redirect::to('rides/'.$id);

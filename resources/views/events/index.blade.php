@@ -49,10 +49,20 @@
                                     {{ Form::label('cost', 'Cost') }}
                                     {{ Form::number('cost', Input::old('cost'), array('class' => 'form-control','placeholder'=>'Cost')) }}
                                 </div>
-                                <div class="form-group">
+                                {{--<div class="form-group">
                                     {{ Form::label('datetime', 'Datetime') }}
                                     {{ Form::input('datetime-local','datetime',null, ['class' => 'form-control','placeholder'=>'Date Time']) }}
-                                    {{--('', 'published_at', $article->published_at->format('Y-m-d\TH:i'), ['class' => 'form-control'])--}}
+                                    --}}{{--('', 'published_at', $article->published_at->format('Y-m-d\TH:i'), ['class' => 'form-control'])--}}{{--
+                                </div>--}}
+                                <div class="form-group">
+                                    <label class="control-label">Datetime</label>
+
+                                        <div class='input-group date' id='dtp-event'>
+                                            <input type='text' class="form-control" name="datetime" placeholder="Time"/>
+                                            <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                        </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -106,6 +116,13 @@
 @stop
 @section('js')
     <script src="{{ asset('assets/components/events.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#dtp-event').datetimepicker({
+                format:'YYYY-MM-DD HH:mm'
+            });
+        });
+    </script>
 @stop
 @section('css')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" />

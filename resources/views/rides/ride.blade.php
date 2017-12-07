@@ -26,22 +26,22 @@
                 <label class="col-sm-1 control-label">Driver</label>
                 <div class="col-sm-5">
                     {{----}}
-                        {{--<input type="text" class="form-control" name="name" value="{{$ride->driver->name}}">--}}
-                        <select class="form-control" name="driver_id">
-                            <option disabled selected value>Select</option>
-                            @if (!is_null($ride->driver))
-                                @foreach($users as $key => $value)
-                                    <option value="{{$value->id}}" {{ $value->id == $ride->driver->id ? 'selected="selected"' : '' }}>{{$value->name}}</option>
-                                @endforeach
-                            @else
-                                @foreach($users as $key => $value)
-                                    <option value="{{$value->id}}">{{$value->name}}</option>
-                                @endforeach
-                            @endif
+                    {{--<input type="text" class="form-control" name="name" value="{{$ride->driver->name}}">--}}
+                    <select class="form-control" name="driver_id">
+                        <option disabled selected value>Select</option>
+                        @if (!is_null($ride->driver))
+                            @foreach($users as $key => $value)
+                                <option value="{{$value->id}}" {{ $value->id == $ride->driver->id ? 'selected="selected"' : '' }}>{{$value->name}}</option>
+                            @endforeach
+                        @else
+                            @foreach($users as $key => $value)
+                                <option value="{{$value->id}}">{{$value->name}}</option>
+                            @endforeach
+                        @endif
 
-                        </select>
+                    </select>
+
                     {{----}}
-
                 </div>
             </div>
             <div class="col-sm-6">
@@ -67,11 +67,27 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
+                                <label class="control-label">Name</label>
                                 <select class="form-control" name="user_id">
                                     @foreach($users as $key => $value)
                                         <option value="{{$value->id}}">{{$value->name}}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Location</label>
+                                <input type="text" class="form-control" name="location" placeholder="Location">
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Datetime</label>
+                                    <div class='input-group date' id='dtp-ride'>
+                                        <input type='text' class="form-control" name="datetime" placeholder="Time"/>
+                                        <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -120,5 +136,8 @@
 @section('js')
     <script type="text/javascript">
         $('#users').DataTable();
+        $('#dtp-ride').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm'
+        });
     </script>
 @stop

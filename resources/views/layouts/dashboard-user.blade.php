@@ -1,6 +1,6 @@
 @extends('layouts.plane')
 @section('body')
- <div id="wrapper">
+ <div id="wrapper" style="background-color: white">
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -342,12 +342,7 @@
             </div>
             <div class="row">
                 @yield('breadcrumb')
-                <div class="alert alert-warning alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                </div>
+                @include('shared/alert')
             </div>
             <div class="row">
                 @yield('section')

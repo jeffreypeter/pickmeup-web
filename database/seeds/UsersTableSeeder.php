@@ -57,28 +57,6 @@ class UsersTableSeeder extends Seeder
         $user->active=true;
         $user->save();
 
-        // 5
-        $user = new User();
-        $user->name ='Mercury';
-        $user->email = 'mercury@iu.edu';
-        $user->phone = '1122728408';
-        $user->password=bcrypt('testing');
-        $user->organization='BISM';
-        $user->address='home';
-        $user->active=true;
-        $user->save();
-
-        // 6
-        $user = new User();
-        $user->name ='Jason';
-        $user->email = 'jason@iu.edu';
-        $user->phone = '1122728408';
-        $user->password=bcrypt('testing');
-        $user->organization='BISM';
-        $user->address='home';
-        $user->active=true;
-        $user->save();
-
 		// 5
         $user = new User();
         $user->name ='Jason';

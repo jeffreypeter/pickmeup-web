@@ -33,33 +33,37 @@ class HomeController extends Controller
     public function index()
     {
 
-        if(Auth::user()->hasRole('moderator')) {
+        if (Auth::user()->hasRole('moderator')) {
             Log::info('moderator');
             return view('home-admin');
         } else {
             Log::info('guest');
-			
-		
-			
-			
-			$events=Event::whereIn('id', function($query){
-    $query->select('event_id')
-    ->from(with(new Ride)->getTable())
-    ->where('driver_id',Auth::user()->id);
-})->get();
-			
-        return View::make('home-user')
-            ->with('events', $events);
-           
+            $events = Event::count();
+            $dashboard = array(
+                'events' => $events
+            );
+            Log::info($dashboard);
+//            $rides = Ride:
+            /*$events = Event::whereIn('id', function ($query) {
+                $query->select('event_id')
+                    ->from(with(new Ride)->getTable())
+                    ->where('driver_id', Auth::user()->id);
+            })->get();*/
+            return View::make('home-user')
+                ->with('dashboard', $dashboard);
+
         }
-		
-		
+
 
     }
-    public function profile() {
+
+    public function profile()
+    {
         return view('user.profile');
     }
-    public function updateProfile($id, Request $request) {
+
+    public function updateProfile($id, Request $request)
+    {
         $user = Auth::user();
         $user->fill($request->all());
         $user->save();

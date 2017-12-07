@@ -15,56 +15,62 @@
             <div class="col-8">
                 <div class="row">
                     {{--<form class="form-horizontal" method="put" action="event/.{{$event->id}}">--}}
-{{--                    {{ Form::model($event, array('route' => 'ride.update', $event->id)) }}--}}
+                    {{--                    {{ Form::model($event, array('route' => 'ride.update', $event->id)) }}--}}
                     {{ Form::open(array('url' => 'events/' . $event->id, 'class'=>'form-horizontal')) }}
-                        {{--<input type="hidden" name="id" value="{{$event->id}}">--}}
-                        <input type='hidden' name='_method' value='PUT' />
-                        <div class="form-group">
-                            {{--<label class="col-sm-2 control-label">Name</label>--}}
-                            {{Form::label('name', 'Name', array('class' => 'col-sm-2 control-label'))}}
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" name="name" value="{{$event->name}}">
+                    {{--<input type="hidden" name="id" value="{{$event->id}}">--}}
+                    <input type='hidden' name='_method' value='PUT'/>
+                    <div class="form-group">
+                        {{--<label class="col-sm-2 control-label">Name</label>--}}
+                        {{Form::label('name', 'Name', array('class' => 'col-sm-2 control-label'))}}
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="name" value="{{$event->name}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Location</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="location" value="{{$event->location}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Description</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="description" value="{{$event->description}}">
+                        </div>
+                    </div>
+                    {{--<div class="form-group">
+                        <label class="col-sm-2 control-label">Time</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="datetime" value="{{$event->datetime}}">
+                        </div>
+                    </div>--}}
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Time</label>
+{{--                        {{ Form::label('start_time', 'Start time') }}--}}
+                        <div class="col-sm-5">
+                            <div class='input-group date' id='dtp-event'>
+                                <input type='text' class="form-control" name="datetime" placeholder="Time" value="{{$event->datetime}}"/>
+                                <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Location</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" name="location" value="{{$event->location}}">
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Cost</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="cost" value="{{$event->cost}}">
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Description</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" name="description" value="{{$event->description}}">
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Capacity</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" name="capacity" value="{{$event->capacity}}">
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Time</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" name="datetime" value="{{$event->datetime}}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Cost</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" name="cost" value="{{$event->cost}}">
-                            </div>
-                        </div>
-                        {{--<div class="form-group">
-                            <label class="col-sm-2 control-label">Registration</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" name="cost" value="{{$event->registration}}">
-                            </div>
-                        </div>--}}
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Capacity</label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control" name="capacity" value="{{$event->capacity}}">
-                            </div>
-                        </div>
-                        <div class="col-sm-7">
-                            <button type="submit" class="btn btn-info pull-right">Update</button>
-                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <button type="submit" class="btn btn-info pull-right">Update</button>
+                    </div>
                     {{ Form::close() }}
                 </div>
             </div>
@@ -108,9 +114,18 @@
                                 {{ Form::hidden('event_id',$event->id, []) }}
                             </div>
                             <div class="form-group">
-                                {{ Form::label('start_time', 'Start time') }}
-                                {{ Form::input('datetime-local','start_time',null, ['class' => 'form-control','placeholder'=>'Start Time']) }}
+
+                                {{--{{ Form::input('datetime-local','start_time',null, ['class' => 'form-control','placeholder'=>'Start Time']) }}--}}
                                 {{--('', 'published_at', $article->published_at->format('Y-m-d\TH:i'), ['class' => 'form-control'])--}}
+                            </div>
+                            <div class="form-group">
+                                {{ Form::label('start_time', 'Start time') }}
+                                <div class='input-group date' id='dtp-new-route'>
+                                    <input type='text' class="form-control" name="start_time" placeholder="Start time"/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -137,11 +152,10 @@
                     <tbody>
                     @foreach($event->rides as $key => $value)
                         <tr>
-                            <td><a
-                                   href="{{ URL::to('rides/' . $value->id) }}">{{ $value->name }}</a></td>
+                            <td><a href="{{ URL::to('rides/' . $value->id) }}">{{ $value->name }}</a></td>
                             <td>
                                 @if (!is_null($value->driver))
-                                   {{$value->driver->name}}
+                                    {{$value->driver->name}}
                                 @endif
                             </td>
                             <td>{{ $value->start_time }}</td>
@@ -167,6 +181,14 @@
 @section('js')
     <script type="text/javascript">
         $('#rides').DataTable();
+        $(function () {
+            $('#dtp-new-route').datetimepicker({
+                format:'YYYY-MM-DD HH:mm'
+            });
+            $('#dtp-event').datetimepicker({
+                format:'YYYY-MM-DD HH:mm'
+            });
+        });
     </script>
 @stop
 @section('css')
