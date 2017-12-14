@@ -32,6 +32,7 @@ mix.scripts([
     'bower_components/Chart.js/dist/Chart.js',
     'bower_components/metisMenu/dist/metisMenu.js',
     'node_modules/datatables.net/js/jquery.dataTables.js',
+    'node_modules/parsleyjs/dist/parsley.js',
     'bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
     'resources/js/sb-admin-2.js',
     'resources/js/frontend.js'

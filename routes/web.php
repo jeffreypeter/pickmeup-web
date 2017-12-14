@@ -19,7 +19,8 @@ Route::get('/register', function()
 {
 	return view('auth.register');
 });
-
+Route::post('events/rsvp/{eventId}','UserController@rsvp');
+Route::post('events/rsvp/{eventId}/remove','UserController@removeRsvp');
 Route::get('events/upcoming','UserController@getEvents');
 Route::get('events/rides','UserController@getRides');
 Route::get('events/event/{id}','UserController@getEventDetails');

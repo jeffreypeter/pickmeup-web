@@ -85,7 +85,7 @@
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        {{ Form::open(array('url' => 'rides')) }}
+                        {{ Form::open(array('url' => 'rides','id'=>'ride-form')) }}
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
@@ -189,6 +189,7 @@
                 format:'YYYY-MM-DD HH:mm'
             });
         });
+        $('#ride-form').parsley();
     </script>
 @stop
 @section('css')

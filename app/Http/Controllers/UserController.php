@@ -8,17 +8,33 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use View;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
-    //
-    /*function rsvpEvent($eventId,$userId) {
 
-    }*/
+    function rsvp($eventId) {
+        $event = Event::find($eventId);
+        $event->rsvps()->attach(Auth::user()->id);
+        return Redirect::to('events/upcoming');
+    }
+    function removeRsvp($eventId) {
+        $event = Event::find($eventId);
+        $event->rsvps()->detach(Auth::user()->id);
+        return Redirect::to('events/upcoming');
+    }
 
     function getEvents() {
         Log::info('getEvents');
         $events = Event::all();
+
+        $events = DB::table('events')
+            ->leftJoin('event_user','events.id','=','event_user.event_id')
+            ->leftJoin('users','users.id','=','event_user.user_id')
+            ->select('events.id','events.name','events.description','events.location','events.datetime','event_user.id as rsvp')
+            ->get();
+
+        Log::info($events);
         return View::make('user.events')
             ->with('events', $events);
     }

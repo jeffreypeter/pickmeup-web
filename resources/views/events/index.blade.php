@@ -19,7 +19,7 @@
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        {{ Form::open(array('url' => 'events')) }}
+                        {{ Form::open(array('url' => 'events','id'=>'event-form')) }}
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title" id="myModalLabel">Create New Event</h4>
@@ -122,6 +122,7 @@
                 format:'YYYY-MM-DD HH:mm'
             });
         });
+        $('#event-form').parsley();
     </script>
 @stop
 @section('css')
